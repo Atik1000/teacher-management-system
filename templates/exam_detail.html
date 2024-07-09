@@ -1,0 +1,22 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block content %}
+  <h1>Exam Details</h1>
+  <p>University: {{ exam.university_name }}</p>
+  <p>Subject: {{ exam.subject_name }}</p>
+  <p>Department: {{ exam.department_name }}</p>
+  <p>Semester: {{ exam.semester_name }}</p>
+  <p>Batch: {{ exam.batch_number }}</p>
+  <p>Course Code: {{ exam.course_code }}</p>
+  <p>Time: {{ exam.time }}</p>
+  <p>Marks: {{ exam.marks }}</p>
+  <h2>Questions</h2>
+  <ul>
+    <li>{{ exam.q1_number }}: {{ exam.q1_description }} ({{ exam.q1_marks }} marks)</li>
+    <li>{{ exam.q2_number }}: {{ exam.q2_description }} ({{ exam.q2_marks }} marks)</li>
+    <li>{{ exam.q3_number }}: {{ exam.q3_description }} ({{ exam.q3_marks }} marks)</li>
+    <li>{{ exam.q4_number }}: {{ exam.q4_description }} ({{ exam.q4_marks }} marks)</li>
+    <li>{{ exam.q5_number }}: {{ exam.q5_description }} ({{ exam.q5_marks }} marks)</li>
+    <li>{{ exam.q6_number }}: {{ exam.q6_description }} ({{ exam.q6_marks }} marks)</li>
+  </ul>
+{% endblock %}

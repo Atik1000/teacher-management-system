@@ -1,4 +1,4 @@
-"""django_boilerplate URL Configuration
+"""teacher_management_system URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -26,6 +26,8 @@ urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
     path('auth/', include('customauth.urls')),
     path('dashboard/', include('dashboard.urls')),
+    path('question/', include('question.urls')),
+    path('seatplan/',include('seatplan.urls'))
 ]
 
 # serve media files in development environment --------------------------------
