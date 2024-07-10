@@ -1,24 +1,26 @@
-from django.urls import reverse
-from django.views.generic import CreateView, DetailView
-from .models import Room, Column, Student
-from .forms import RoomForm
+# views.py
+from django.shortcuts import render, get_object_or_404
+from .models import Room, Intake, SeatPlan,Student
+from .utils import assign_seat_plan
 
-class RoomCreateView(CreateView):
-    model = Room
-    form_class = RoomForm
-    template_name = 'room_form.html'
+def generate_seat_plan(request, room_number):
+    room = get_object_or_404(Room, number=room_number)
+    students=Student.objects.all()
+    for student in students:
+        try: 
+            SeatPlan.objects.get(student=student)
+        except SeatPlan.DoesNotExist:
+            total_seat=SeatPlan.objects.filter(room=room).count()
 
-    def get_success_url(self):
-        return reverse('room-detail', kwargs={'pk': self.object.pk})
+            if room.num_seats<total_seat+1:
 
-class RoomDetailView(DetailView):
-    model = Room
-    template_name = 'room_detail.html'
-    context_object_name = 'room'
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['columns'] = Column.objects.filter(room=self.object)
-        context['intake1'] = Column.objects.filter(room=self.object, intake__name='Intake 1')
-        context['intake2'] = Column.objects.filter(room=self.object, intake__name='Intake 2')
-        return context
+                SeatPlan.objects.create(room=room,student=student,seat_number=total_seat+1)
+
+
+    context = {
+        'room': room,
+        # 'seat_plans': seat_plans,
+    }
+    return render(request, 'seat_plan.html', context)
+
+

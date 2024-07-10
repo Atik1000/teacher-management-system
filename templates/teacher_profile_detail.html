@@ -1,0 +1,11 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+    <h1>{{ teacher.full_name }}</h1>
+    <p><strong>Department:</strong> {{ teacher.department.dept_name }}</p>
+    <p><strong>Email:</strong> {{ teacher.email }}</p>
+    <p><strong>Phone Number:</strong> {{ teacher.phone_number }}</p>
+    <p><strong>Address:</strong> {{ teacher.address }}</p>
+    <a href="{% url 'teacher_list' %}">Back to Teacher List</a>
+    {% endblock %}

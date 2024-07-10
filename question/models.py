@@ -1,5 +1,5 @@
 from django.db import models
-from django.db import models
+from django.urls import reverse
 
 
 class Exam(models.Model):
@@ -9,7 +9,7 @@ class Exam(models.Model):
     semester_name = models.CharField(max_length=50, null=True, blank=True)
     batch_number = models.CharField(max_length=20, null=True, blank=True)
     course_code = models.CharField(max_length=20, null=True, blank=True)
-    time = models.DateTimeField(null=True, blank=True)
+    time = models.CharField(max_length=20,null=True, blank=True)
     marks = models.IntegerField(null=True, blank=True)
 
     # Define fields for each question
@@ -39,6 +39,9 @@ class Exam(models.Model):
 
     def __str__(self):
         return f"University: {self.university_name}, Course: {self.course_code}, Batch: {self.batch_number}"
+    def get_absolute_url(self):
+        return reverse('exam-detail', kwargs={'pk': self.pk})
+
 
 
 class Question(models.Model):

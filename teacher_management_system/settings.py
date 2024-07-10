@@ -48,7 +48,8 @@ DJANGO_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'question',
-    'seatplan'
+    'seatplan',
+    'teacher_profile'
 ]
 
 THIRD_PARTY_APPS = [

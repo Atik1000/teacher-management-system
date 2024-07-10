@@ -44,8 +44,7 @@
                         <span class="menu-icon">
                             <i class="ki-outline ki-gift fs-2"></i>
                         </span>
-                        <span class="menu-title">Department</span>
-                        <span class="menu-arrow"></span>
+                        <span class="menu-title"><a href="{% url 'department_list' %}">Department</a>
                     </span>
                     <!--end:Menu link-->
                     <!--begin:Menu sub-->
@@ -72,6 +71,17 @@
                             <i class="ki-outline ki-gift fs-2"></i>
                         </span>
                         <span class="menu-title"><a href="{% url 'exam-add' %}">Add Exam</a>
+                        </span>
+                    </span>
+                </div>
+
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                    <!--begin:Menu link-->
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <i class="ki-outline ki-gift fs-2"></i>
+                        </span>
+                        <span class="menu-title"><a href="{% url 'teacher_create' %}">Create Teacher profile</a>
                         </span>
                     </span>
                 </div>

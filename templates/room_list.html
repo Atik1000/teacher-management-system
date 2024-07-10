@@ -1,0 +1,30 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1 class="mb-4">Rooms</h1>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Room Number</th>
+        <th scope="col">Number of Seats</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for room in rooms %}
+      <tr>
+        <td>{{ room.room_no }}</td>
+        <td>{{ room.number_of_seats }}</td>
+        <td>
+          <a href="{% url 'room-detail' room.pk %}" class="btn btn-info btn-sm">View</a>
+          <a href="{% url 'room-edit' room.pk %}" class="btn btn-warning btn-sm">Edit</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

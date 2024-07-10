@@ -1,22 +1,64 @@
 {% extends "base/base.html" %}
 {% load static %}
 {% block content %}
-  <h1>Exam Details</h1>
-  <p>University: {{ exam.university_name }}</p>
-  <p>Subject: {{ exam.subject_name }}</p>
-  <p>Department: {{ exam.department_name }}</p>
-  <p>Semester: {{ exam.semester_name }}</p>
-  <p>Batch: {{ exam.batch_number }}</p>
-  <p>Course Code: {{ exam.course_code }}</p>
-  <p>Time: {{ exam.time }}</p>
-  <p>Marks: {{ exam.marks }}</p>
-  <h2>Questions</h2>
-  <ul>
-    <li>{{ exam.q1_number }}: {{ exam.q1_description }} ({{ exam.q1_marks }} marks)</li>
-    <li>{{ exam.q2_number }}: {{ exam.q2_description }} ({{ exam.q2_marks }} marks)</li>
-    <li>{{ exam.q3_number }}: {{ exam.q3_description }} ({{ exam.q3_marks }} marks)</li>
-    <li>{{ exam.q4_number }}: {{ exam.q4_description }} ({{ exam.q4_marks }} marks)</li>
-    <li>{{ exam.q5_number }}: {{ exam.q5_description }} ({{ exam.q5_marks }} marks)</li>
-    <li>{{ exam.q6_number }}: {{ exam.q6_description }} ({{ exam.q6_marks }} marks)</li>
-  </ul>
+  <h1 class="text-center">{{ exam.university_name }}</h1>
+  <p class="text-center">{{ exam.subject_name }}</p>
+  <p class="text-center">{{ exam.department_name }}</p>
+  <p class="text-center">{{ exam.semester_name }}</p>
+  <p class="text-center">{{ exam.batch_number }}</p>
+  <p class="text-center">{{ exam.course_code }}</p>
+  <span style="text-align: left;">Total Time: {{ exam.time }}</span>
+  <span style="text-align: right;margin-left: 80%;"> Total Marks: {{ exam.marks }}</span>
+ 
+   <br>
+   <br><table class="table">
+    <thead>
+    </thead>
+    <tbody>
+      <tr>
+        <th colspan="3" class="text-center">Group A</th>
+      </tr>
+      <tr>
+        <th scope="row">{{ exam.q1_number }}: {{ exam.q1_description }}</th>
+        <td></td>
+        <td>{{ exam.q1_marks }}</td>
+      </tr>
+      <tr>
+        <th scope="row">{{ exam.q2_number }}:{{ exam.q2_description }}</th>
+        <td></td>
+        <td>{{ exam.q2_marks }}</td>
+      </tr>
+      <tr>
+        <th scope="row">{{ exam.q3_number }}: {{ exam.q3_description }}</th>
+        <td></td>
+        <td>{{ exam.q3_marks }}</td>
+      </tr>
+      <tr>
+        <th colspan="3" class="text-center">Group B</th>
+      </tr>
+      <tr>
+        <th scope="row">{{ exam.q4_number }}:{{ exam.q4_description }}</th>
+        <td></td>
+        <td>{{ exam.q4_marks }}</td>
+      </tr>
+      <tr>
+        <th scope="row">{{ exam.q5_number }}:{{ exam.q5_description }}</th>
+        <td></td>
+        <td>{{ exam.q5_marks }}</td>
+      </tr>
+      <tr>
+        <th colspan="3" class="text-center">Group C</th>
+      </tr>
+      <tr>
+        <th scope="row">{{ exam.q6_number }}:{{ exam.q6_description }}</th>
+        <td></td>
+        <td>{{ exam.q6_marks }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="text-center">
+    <a href="{% url 'generate_pdf' exam.id %}" class="btn btn-primary">Download as PDF</a>
+  </div>
+  
 {% endblock %}

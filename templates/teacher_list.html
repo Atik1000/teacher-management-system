@@ -1,0 +1,14 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h1>Teacher List</h1>
+<ul>
+    {% for teacher in teachers %}
+        <li><a href="{% url 'teacher_profile_detail' teacher.pk %}">{{ teacher.full_name }}</a></li>
+    {% empty %}
+        <li>No teachers available.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
