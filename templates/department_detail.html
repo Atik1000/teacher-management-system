@@ -2,14 +2,24 @@
 {% load static %}
 
 {% block content %}
-
-    <h1>{{ department.dept_name }}</h1>
-    <h2>Teachers</h2>
-    <ul>
-        {% for teacher in teachers %}
-            <li><a href="{% url 'teacher_profile_detail' teacher.pk %}">{{ teacher.full_name }}</a></li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'department_list' %}">Back to Departments</a>
-
-    {% endblock %}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">{{ department.dept_name }}</h1>
+            <h2 class="card-subtitle mb-4">Teachers</h2>
+            {% if teachers %}
+                <ul class="list-group list-group-flush">
+                    {% for teacher in teachers %}
+                        <li class="list-group-item">
+                            <a href="{% url 'teacher_profile_detail' teacher.pk %}">{{ teacher.full_name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="card-text">No teachers available in this department.</p>
+            {% endif %}
+            <a href="{% url 'department_list' %}" class="btn btn-secondary mt-3">Back to Departments</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

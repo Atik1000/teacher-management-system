@@ -17,7 +17,7 @@ class Intake(models.Model):
 
 class Student(models.Model):
     name = models.CharField(max_length=100)
-    student_id = models.CharField(max_length=100, unique=True)
+    student_id = models.IntegerField(unique=True)
     intake = models.ForeignKey(Intake, on_delete=models.CASCADE)
     
     def __str__(self):
@@ -32,4 +32,4 @@ class SeatPlan(models.Model):
         unique_together = ('room', 'seat_number')
         
     def __str__(self):
-        return f'{self.student} in Room {self.room.number} - Column {self.column}, Seat {self.seat_number}'
+        return f'{self.student} in Room {self.room.number}  Seat {self.seat_number}'

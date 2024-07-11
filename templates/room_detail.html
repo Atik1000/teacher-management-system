@@ -2,43 +2,36 @@
 {% load static %}
 
 {% block content %}
-<div class="container mt-5">
-  <h1 class="mb-4">Room {{ room.room_no }}</h1>
-  
-  <div class="row mb-3">
-    <div class="col-md-6">
-      <h5>Number of Seats</h5>
-      <p>{{ room.number_of_seats }}</p>
-    </div>
-  </div>
-
-  <h2 class="mt-4">Columns</h2>
-  {% for column in room.column_set.all %}
-    <div class="row mb-3">
-      <div class="col-md-4">
-        <h5>Column Roll</h5>
-        <p>{{ column.roll }}</p>
-      </div>
-      <div class="col-md-4">
-        <h5>Intake</h5>
-        <p>{{ column.intake.name }}</p>
-      </div>
-    </div>
-  {% endfor %}
-  
-  <h2 class="mt-4">Students</h2>
-  {% for student in column.intake.student_set.all %}
-    <div class="row mb-3">
-      <div class="col-md-4">
-        <h5>Roll Number</h5>
-        <p>{{ student.roll_no }}</p>
-      </div>
-      <div class="col-md-4">
-        <h5>Name</h5>
-        <p>{{ student.name }}</p>
-      </div>
-    </div>
-  {% endfor %}
-  
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 {% endblock %}

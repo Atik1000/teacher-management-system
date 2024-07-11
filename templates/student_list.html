@@ -1,0 +1,30 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Student</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Id</th>
+                <th>Intake</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.name }}</td>
+
+                <td>{{ student.student_id }}</td>
+
+                <td>{{ student.intake }}</td>
+           
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'student_create' %}" class="btn btn-primary">Add student</a>
+</div>
+{% endblock %}

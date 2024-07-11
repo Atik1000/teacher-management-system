@@ -6,13 +6,16 @@
   <h1 class="mb-4">{% if form.instance.pk %}Update Room{% else %}Create Room{% endif %}</h1>
   <form method="post">
     {% csrf_token %}
-    <div class="form-group">
-      <label for="{{ form.room_no.id_for_label }}">{{ form.room_no.label }}</label>
-      {{ form.room_no }}
-    </div>
-    <div class="form-group">
-      <label for="{{ form.number_of_seats.id_for_label }}">{{ form.number_of_seats.label }}</label>
-      {{ form.number_of_seats }}
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        {{ form.number.label_tag }} {{ form.number }}
+      </div>
+      <div class="col-md-4 mb-3">
+        {{ form.num_seats.label_tag }} {{ form.num_seats }}
+      </div>
+      <div class="col-md-4 mb-3">
+        {{ form.num_columns.label_tag }} {{ form.num_columns }}
+      </div>
     </div>
     <button type="submit" class="btn btn-primary">Save</button>
   </form>

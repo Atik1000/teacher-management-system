@@ -11,8 +11,8 @@ urlpatterns = [
     path('auth/', include('customauth.urls')),
     path('dashboard/', include('dashboard.urls')),
     path('question/', include('question.urls')),
-    # path('seatplan/', include('seatplan.urls')),
-    path('teacher/', include('teacher_profile.urls')),  # Include the correct urls.py
+    path('seatplan/', include('seatplan.urls')),
+    path('teacher/', include('teacher_profile.urls')),  
 ]
 
 # Serve media files in development environment

@@ -2,10 +2,24 @@
 {% load static %}
 
 {% block content %}
-    <h1>{{ teacher.full_name }}</h1>
-    <p><strong>Department:</strong> {{ teacher.department.dept_name }}</p>
-    <p><strong>Email:</strong> {{ teacher.email }}</p>
-    <p><strong>Phone Number:</strong> {{ teacher.phone_number }}</p>
-    <p><strong>Address:</strong> {{ teacher.address }}</p>
-    <a href="{% url 'teacher_list' %}">Back to Teacher List</a>
-    {% endblock %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">{{ teacher.full_name }}</h2>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><strong>Department:</strong> {{ teacher.department.dept_name }}</p>
+          <p class="card-text"><strong>Email:</strong> {{ teacher.email }}</p>
+          <p class="card-text"><strong>Phone Number:</strong> {{ teacher.phone_number }}</p>
+          <p class="card-text"><strong>Address:</strong> {{ teacher.address }}</p>
+        </div>
+        <div class="card-footer text-right">
+          <a href="{% url 'teacher_list' %}" class="btn btn-secondary">Back to Teacher List</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

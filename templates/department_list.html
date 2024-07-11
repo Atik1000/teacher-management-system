@@ -2,12 +2,24 @@
 {% load static %}
 
 {% block content %}
-
-    <h1>Departments</h1>
-    <ul>
-        hi
+<div class="container mt-5">
+    <h1 class="mb-4">Departments</h1>
+    <div class="row">
         {% for department in departments %}
-            <li><a href="{% url 'department_detail' department.pk %}">{{ department.dept_name }}</a></li>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ department.dept_name }}</h5>
+                        <a href="{% url 'department_detail' department.pk %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
-    </ul>
-    {% endblock %}
+    </div>
+    {% if not departments %}
+        <div class="alert alert-info" role="alert">
+            No departments available.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

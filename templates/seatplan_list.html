@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Seat Plans</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Room</th>
+                <th>Student</th>
+                <th>Seat Number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for seatplan in seatplans %}
+            <tr>
+                <td>{{ seatplan.room.number }}</td>
+                <td>{{ seatplan.student.name }}</td>
+                <td>{{ seatplan.seat_number }}</td>
+                <td>
+                    <a href="{% url 'seatplan_update' seatplan.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{% url 'seatplan_delete' seatplan.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'seatplan_create' %}" class="btn btn-primary">Add Seat Plan</a>
+</div>
+{% endblock %}

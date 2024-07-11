@@ -2,13 +2,31 @@
 {% load static %}
 
 {% block content %}
-
-<h1>Teacher List</h1>
-<ul>
-    {% for teacher in teachers %}
-        <li><a href="{% url 'teacher_profile_detail' teacher.pk %}">{{ teacher.full_name }}</a></li>
-    {% empty %}
-        <li>No teachers available.</li>
-    {% endfor %}
-</ul>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="mb-4">Teacher List</h1>
+      <div class="card">
+        <div class="card-header">
+          <h2 class="h4 mb-0">All Teachers</h2>
+        </div>
+        <div class="card-body p-0">
+          <ul class="list-group list-group-flush">
+            {% for teacher in teachers %}
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a href="{% url 'teacher_profile_detail' teacher.pk %}" class="text-decoration-none">{{ teacher.full_name }}</a>
+                <a href="{% url 'teacher_profile_update' teacher.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
+              </li>
+            {% empty %}
+              <li class="list-group-item">No teachers available.</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="{% url 'teacher_create' %}" class="btn btn-primary">Add New Teacher</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

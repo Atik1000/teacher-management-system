@@ -1,21 +1,28 @@
-# from django.urls import path
-# from .views import (
-#     RoomListView, RoomDetailView, RoomCreateView, RoomUpdateView, RoomDeleteView,
-#     IntakeListView, IntakeDetailView, IntakeCreateView, IntakeUpdateView, IntakeDeleteView
-# )
+from django.urls import path
+from .views import (
+    RoomListView, RoomCreateView, RoomUpdateView, 
+    IntakeListView, IntakeCreateView, IntakeUpdateView, 
+     StudentCreateView,
+    SeatPlanListView, SeatPlanCreateView, StudentListView
+)
 
-# urlpatterns = [
-#     # Room URLs
-#     path('rooms/', RoomListView.as_view(), name='room-list'),
-#     path('rooms/<int:pk>/', RoomDetailView.as_view(), name='room-detail'),
-#     path('rooms/create/', RoomCreateView.as_view(), name='room-create'),
-#     path('rooms/<int:pk>/update/', RoomUpdateView.as_view(), name='room-update'),
-#     path('rooms/<int:pk>/delete/', RoomDeleteView.as_view(), name='room-delete'),
+urlpatterns = [
+    # Room URLs
+    path('room/', RoomListView.as_view(), name='room_list'),
+    path('room/create/', RoomCreateView.as_view(), name='room_create'),
+    path('room/<int:pk>/update/', RoomUpdateView.as_view(), name='room_update'),
 
-#     # Intake URLs
-#     path('intakes/', IntakeListView.as_view(), name='intake-list'),
-#     path('intakes/<int:pk>/', IntakeDetailView.as_view(), name='intake-detail'),
-#     path('intakes/create/', IntakeCreateView.as_view(), name='intake-create'),
-#     path('intakes/<int:pk>/update/', IntakeUpdateView.as_view(), name='intake-update'),
-#     path('intakes/<int:pk>/delete/', IntakeDeleteView.as_view(), name='intake-delete'),
-# ]
+    # Intake URLs
+    path('intake/', IntakeListView.as_view(), name='intake_list'),
+    path('intake/create/', IntakeCreateView.as_view(), name='intake_create'),
+    path('intake/<int:pk>/update/', IntakeUpdateView.as_view(), name='intake_update'),
+
+    # Student URLs
+
+    path('student/', StudentListView.as_view(), name='student_list'),
+    path('student/create/', StudentCreateView.as_view(), name='student_create'),
+
+    # SeatPlan URLs
+    path('seatplan/', SeatPlanListView.as_view(), name='seatplan_list'),
+    path('seatplan/create/', SeatPlanCreateView.as_view(), name='seatplan_create'),
+]
